@@ -4,13 +4,15 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class schedule extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      this.belongsToMany(models.Lessons, {
+        through:"schedule_lessons",
+        foreignKey:"id_schedule"
+      })
+      this.belongsToMany(models.DaysWeek,{
+        through:"schedule_lessons",
+        foreignKey:"id_schedule"
+      })
     }
   };
   schedule.init({

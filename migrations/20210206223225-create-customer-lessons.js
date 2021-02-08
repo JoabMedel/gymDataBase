@@ -1,34 +1,24 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('schedule_lessons', {
-      id_lesson: {
+    await queryInterface.createTable('customer_lessons', {
+      idCustomer: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.INTEGER,
         references:{
-          model:'Lessons',
-          key:'id'
+          model:"Customers",
+          key:"id"
         }
       },
-      id_schedule: {
+      idlesson: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.INTEGER,
         references:{
-          model: 'schedules',
-          key:'id'
+          model:"Lessons",
+          key:"id"
         }
-      },
-      day_week: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:'DaysWeeks',
-          key:'id'
-        }
-      },
-      availability: {
-        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +31,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('schedule_lessons');
+    await queryInterface.dropTable('customer_lessons');
   }
 };

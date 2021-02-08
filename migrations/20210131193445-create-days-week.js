@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       dayWeek: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
